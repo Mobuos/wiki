@@ -63,7 +63,7 @@ jobs:
         file: dev/build/Dockerfile
         push: true
         tags: |
-          mobuos/wiki:auri
+          mobuos/wiki:auri-$REL_VERSION_STRICT
   # requarks/wiki:canary
   # requarks/wiki:canary-${{ env.REL_VERSION_STRICT }}
   # ghcr.io/requarks/wiki:canary
@@ -72,7 +72,7 @@ jobs:
     - name: Extract compiled files
       run: |
         mkdir -p _dist
-        # docker create --name wiki ghcr.io/requarks/wiki:canary-$REL_VERSION_STRICT
+        docker create --name wiki docker.io/mobuos/wiki:auri-$REL_VERSION_STRICT
         docker cp wiki:/wiki _dist
         docker rm wiki
         rm _dist/wiki/config.yml
@@ -83,7 +83,7 @@ jobs:
       uses: actions/upload-artifact@v3.1.2
       with:
         name: drop
-        path: wiki-js.tar.gz
+        path: wiki-devops.tar.gz
 
   # cypress:
   #   name: Run Cypress Tests
@@ -107,7 +107,7 @@ jobs:
   #         echo "REL_VERSION_STRICT=$BASE_DEV_VERSION-dev.$GITHUB_RUN_NUMBER" >> $GITHUB_ENV
   #       fi
 
-  #   - name: Run Tests
+  #   - name: Run Testswiki
   #     env:
   #       MATRIXENV: ${{ matrix.dbtype }}
   #       CYPRESS_KEY: ${{ secrets.CYPRESS_KEY }}
@@ -215,7 +215,8 @@ jobs:
   #   - name: Create Bundle
   #     run: tar -czf wiki-js-windows.tar.gz -C $env:GITHUB_WORKSPACE\win .
 
-  #   - name: Upload a Build Artifact
+  #   - name: wiki-devops
+wiki-devopsUpload a Build Artifact
   #     uses: actions/upload-artifact@v3.1.2
   #     with:
   #       name: drop-win
@@ -351,7 +352,7 @@ jobs:
         name: ${{ github.ref_name }}
         body: ${{ steps.changelog.outputs.changes }}
         token: ${{ github.token }}
-        artifacts: 'drop/wiki-js.tar.gz,drop-win/wiki-js-windows.tar.gz'
+        artifacts: 'drop/wiki-devops.tar.gz'
 
     # - name: Notify Slack Releases Channel
     #   uses: slackapi/slack-github-action@v1.18.0
