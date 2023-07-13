@@ -63,7 +63,7 @@ jobs:
         file: dev/build/Dockerfile
         push: true
         tags: |
-          mobuos/wiki:auri-$REL_VERSION_STRICT
+          mobuos/wiki:auri-2
   # requarks/wiki:canary
   # requarks/wiki:canary-${{ env.REL_VERSION_STRICT }}
   # ghcr.io/requarks/wiki:canary
@@ -72,7 +72,7 @@ jobs:
     - name: Extract compiled files
       run: |
         mkdir -p _dist
-        docker create --name wiki docker.io/mobuos/wiki:auri-$REL_VERSION_STRICT
+        docker create --name wiki docker.io/mobuos/wiki:auri-2
         docker cp wiki:/wiki _dist
         docker rm wiki
         rm _dist/wiki/config.yml
@@ -86,7 +86,7 @@ jobs:
         path: wiki-devops.tar.gz
 
   # cypress:
-  #   name: Run Cypress Tests
+  #   name: Run Cypress
   #   runs-on: ubuntu-latest
   #   needs: [build]
 
