@@ -216,7 +216,7 @@ jobs:
   #     run: tar -czf wiki-js-windows.tar.gz -C $env:GITHUB_WORKSPACE\win .
 
   #   - name: wiki-devops
-wiki-devopsUpload a Build Artifact
+  # Upload a Build Artifact
   #     uses: actions/upload-artifact@v3.1.2
   #     with:
   #       name: drop-win
