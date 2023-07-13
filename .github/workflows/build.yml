@@ -64,10 +64,10 @@ jobs:
         push: true
         tags: |
           mobuos/wiki:auri
-          # requarks/wiki:canary
-          # requarks/wiki:canary-${{ env.REL_VERSION_STRICT }}
-          # ghcr.io/requarks/wiki:canary
-          # ghcr.io/requarks/wiki:canary-${{ env.REL_VERSION_STRICT }}
+  # requarks/wiki:canary
+  # requarks/wiki:canary-${{ env.REL_VERSION_STRICT }}
+  # ghcr.io/requarks/wiki:canary
+  # ghcr.io/requarks/wiki:canary-${{ env.REL_VERSION_STRICT }}
 
     - name: Extract compiled files
       run: |
